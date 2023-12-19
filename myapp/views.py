@@ -1,8 +1,10 @@
+from rest_framework.authentication import SessionAuthentication
+from rest_framework.generics import *
+from rest_framework.permissions import (AllowAny, DjangoModelPermissions,
+                                        IsAdminUser, IsAuthenticated)
+
 from .models import Student
 from .serializer import StudentSerializer
-from rest_framework.generics import *
-from rest_framework.permissions import AllowAny, IsAuthenticated, DjangoModelPermissions, IsAdminUser
-from rest_framework.authentication import SessionAuthentication
 
 
 class GetStudents(ListAPIView):
