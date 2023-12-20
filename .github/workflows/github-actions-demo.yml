@@ -1,4 +1,8 @@
----
+name: Build and Test
+'on':
+  pull_request:
+    branches:
+      - main
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -10,7 +14,6 @@ jobs:
       - name: Build
         run: |
           python3 -m venv env
-
   test:
     needs: build
     runs-on: ubuntu-latest
@@ -21,9 +24,4 @@ jobs:
           python-version: 3.8
       - name: Run Tests
         run: |
-           python manage.py test
-name: Build and Test
-'on':
-  pull_request:
-    branches:
-      - main
+          python manage.py test
