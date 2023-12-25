@@ -1,0 +1,27 @@
+name: Build and Test
+'on':
+  pull_request:
+    branches:
+      - main
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set up Python
+        uses: actions/setup-python@v3
+        with:
+          python-version: 3.8
+      - name: Build
+        run: |
+          python3 -m venv env
+  test:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set up Python
+        uses: actions/setup-python@v3
+        with:
+          python-version: 3.8
+      - name: Run Tests
+        run: |
+          python manage.py test
